@@ -37,19 +37,12 @@ unit_manager.add_unit(player=PlayerId.ONE, unit_const=UnitInfo.MILITIA.ID,      
 source_scenario = AoE2DEScenario.from_file(input_file)
 source_trigger_manager = source_scenario.trigger_manager
 
-for triggerId in range(0, 4, 1):
-    trigger0 = source_trigger_manager.add_trigger("----Trigger block" + str(triggerId) + "----", enabled=False,
-                                                  looping=False)
-    trigger1 = source_trigger_manager.add_trigger("Trigger #" + str(trigger0.trigger_id + 1), enabled=True,
-                                                  looping=False)
-    trigger1.new_condition.none()
-    trigger1.new_effect.none()
-    trigger2 = source_trigger_manager.add_trigger("Trigger #" + str(trigger0.trigger_id + 2), enabled=True,
-                                                  looping=False)
-    trigger2.new_condition.own_objects(object_type=ObjectClass.CIVILIAN,
-                                       quantity=1, source_player=1, )
-    trigger2.new_effect.send_chat(message="test string #" + str(triggerId))
+hello_world_trigger = trigger_manager.add_trigger("Hello World Trigger")
+# Add display_instructions effect to the new trigger
+hello_world_trigger.new_effect.display_instructions(
+    display_time=11,
+    message="Hello World"
+)
 
-    
 # After writing the file, move this to C:\Users\USERNAME\Games\Age of Empires 2 DE\PATCHID\resources\_common\scenario
 scenario.write_to_file(ouput_path)
