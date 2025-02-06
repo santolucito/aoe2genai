@@ -5,8 +5,8 @@ from AoE2ScenarioParser.datasets.trigger_lists import *
 
 
 # The path to your scenario folder
-input_file = "test2.aoe2scenario"
-ouput_path = "C:/Users/neemo/Games/Age of Empires 2 DE/76561198844555824/resources/_common/scenario/" + "output.aoe2scenario"
+input_file = "empty.aoe2scenario"
+ouput_path = "C:/Users/msantolu/Games/Age of Empires 2 DE/76561198177849325/resources/_common/scenario/" + "output.aoe2scenario"
 
 # The scenario object
 scenario = AoE2DEScenario.from_file(input_file)
@@ -28,7 +28,7 @@ print(f"Terrain ID: {first_tile.terrain_id}")
 print(f"Elevation: {first_tile.elevation}")
 print(f"Layer: {first_tile.layer}")
 
-scenario.map_manager.map_size = 10
+scenario.map_manager.map_size = 100
 scenario.map_manager.map_color_mood = "DEFAULT"
 
 map_manager.set_elevation(elevation=3, x1=1, y1=1, x2=5, y2=5)
