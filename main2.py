@@ -3,6 +3,7 @@ from AoE2ScenarioParser.datasets.players import PlayerId
 from AoE2ScenarioParser.datasets.units import UnitInfo
 from AoE2ScenarioParser.datasets.trigger_lists import *
 
+
 # The path to your scenario folder
 input_file = "test2.aoe2scenario"
 ouput_path = "C:/Users/neemo/Games/Age of Empires 2 DE/76561198844555824/resources/_common/scenario/" + "output.aoe2scenario"
@@ -37,11 +38,24 @@ unit_manager.add_unit(player=PlayerId.ONE, unit_const=UnitInfo.MILITIA.ID,      
 source_scenario = AoE2DEScenario.from_file(input_file)
 source_trigger_manager = source_scenario.trigger_manager
 
-hello_world_trigger = trigger_manager.add_trigger("Hello World Trigger")
+hello_world_trigger = trigger_manager.add_trigger("Hello Trigger")
 # Add display_instructions effect to the new trigger
 hello_world_trigger.new_effect.display_instructions(
-    display_time=11,
-    message="Hello World"
+    display_time=10,
+    message="Hello"
+)
+
+militia_trigger = trigger_manager.add_trigger("Militia Trigger")
+
+# Add Time Condition
+militia_trigger.new_condition.timer(timer=30)
+
+# Add Create Object Effect
+militia_trigger.new_effect.create_object(
+    object_list_unit_id=UnitInfo.FLEMISH_MILITIA_MALE.ID,
+    source_player=PlayerId.ONE,
+    location_x=1,
+    location_y=1,
 )
 
 # After writing the file, move this to C:\Users\USERNAME\Games\Age of Empires 2 DE\PATCHID\resources\_common\scenario
